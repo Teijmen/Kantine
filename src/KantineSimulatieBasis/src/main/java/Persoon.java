@@ -1,49 +1,60 @@
 package KantineSimulatieBasis.src.main.java;
 
 public class Persoon {
-    private Int BSN;
-    private String Voornaam;
-    private String Achternaam;
-    private Date Geboortedatum;
-    private Char Geslacht;
+    private int BSN;
+    private String voornaam;
+    private String achternaam;
+    private int geboortedatum;
+    private char geslacht;
 
-    public Int getBSN() {
+    public int getBSN() {
         return BSN;
     }
 
-    public void setBSN(Int BSN) {
+    public void setBSN(int BSN) {
         this.BSN = BSN;
     }
 
     public String getVoornaam() {
-        return Voornaam;
+        return voornaam;
     }
 
     public void setVoornaam(String voornaam) {
-        Voornaam = voornaam;
+        this.voornaam = voornaam;
     }
 
     public String getAchternaam() {
-        return Achternaam;
+        return achternaam;
     }
 
     public void setAchternaam(String achternaam) {
-        Achternaam = achternaam;
+        this.achternaam = achternaam;
     }
 
-    public Date getGeboortedatum() {
-        return Geboortedatum;
+    public int getGeboortedatum() {
+        return geboortedatum;
     }
 
-    public void setGeboortedatum(Date geboortedatum) {
-        Geboortedatum = geboortedatum;
+    public void setGeboortedatum(int geboortedatum) {
+        this.geboortedatum = geboortedatum;
     }
 
-    public Char getGeslacht() {
-        return Geslacht;
+    public char getGeslacht() {
+        if(geslacht == 'M'){
+            String geslacht = "Man";
+        } if(geslacht == 'F'){
+            String geslacht = "Vrouw";
+        } if(geslacht == 'O'){
+            String geslacht = "Onbekend";
+        }
+        return geslacht;
     }
 
-    public void setGeslacht(Char geslacht) {
-        Geslacht = geslacht;
+    public void setGeslacht(char geslacht) {
+        if(geslacht == 'M' || geslacht == 'F') {
+            this.geslacht = geslacht;
+        } else {
+            this.geslacht = 'O';
+        }
     }
 }
