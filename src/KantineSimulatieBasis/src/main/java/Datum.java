@@ -29,9 +29,9 @@ public class Datum {
 	 *
 	 * @return Geboortedatum
 	 */
-	public String getDatumAsString() {
-		// TODO
-		return "";
+	public String getDatumAsString(int dag, int maand, int jaar) {
+		String datum = String.valueOf(this.dag) + " - " + String.valueOf(this.maand) + " - " + String.valueOf(this.jaar) ;
+		return datum;
 	}
 
 	public void setDag(int dag) {

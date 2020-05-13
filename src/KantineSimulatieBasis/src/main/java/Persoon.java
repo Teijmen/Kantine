@@ -1,6 +1,7 @@
 package KantineSimulatieBasis.src.main.java;
 
 public class Persoon {
+    private Datum datum;
     private int BSN;
     private String voornaam;
     private String achternaam;
@@ -58,6 +59,7 @@ public class Persoon {
      */
     public void setGeboortedatum(int geboortedatum) {
         this.geboortedatum = geboortedatum;
+        //this.geboortedatum = geboortedatum.getDatumAsString();
     }
     /**
      * Hier wordt de door de user ingevoerde geboortedatum teruggegeven
