@@ -9,8 +9,8 @@ import java.util.Stack;
 
 public class Dienblad {
 
-    private ArrayList<Artikel> artikelen;
-    private Persoon klant;
+    private ArrayList<Artikel> artikelen; //alle artikelen op een dienblad
+    private Persoon klant;  //de klant
 
     /**
      * Constructor

@@ -1,7 +1,9 @@
+package KantineSimulatieBasis.src.main.java;
+
 import java.util.Iterator;
 
 public class Kassa {
-
+    
     /**
      * Constructor
      */
