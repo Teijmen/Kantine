@@ -13,7 +13,7 @@ public class KassaRij {
      * Constructor
      */
     public KassaRij() {
-        // method body omitted
+        rij = new ArrayList<>();
     }
 
     /**
@@ -22,7 +22,6 @@ public class KassaRij {
      * @param klant
      */
     public void sluitAchteraan(Dienblad klant) {
-        // method body omitted
         rij.add(klant);
     }
 

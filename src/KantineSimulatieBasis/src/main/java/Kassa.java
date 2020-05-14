@@ -3,12 +3,15 @@ package KantineSimulatieBasis.src.main.java;
 import java.util.Iterator;
 
 public class Kassa {
-    
+
+    private int aantalArtikelenKassa = 0;
+    private double totaalBedragKassa = 0;
+
     /**
      * Constructor
      */
     public Kassa(KassaRij kassarij) {
-        // method body omitted
+       kassarij = new KassaRij();
     }
 
     /**
@@ -19,7 +22,8 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        // method body omitted
+        aantalArtikelenKassa += klant.getAantalArtikelen();
+        totaalBedragKassa += klant.getTotaalPrijs();
     }
 
     /**
@@ -29,17 +33,17 @@ public class Kassa {
      * @return aantal artikelen
      */
     public int aantalArtikelen() {
-        // method body omitted
+       return aantalArtikelenKassa;
     }
 
     /**
-     * Geeft het totaalbedrag van alle artikelen die de kass zijn gepasseerd, vanaf het moment dat
+     * Geeft het totaalbedrag van alle artikelen die de kassa zijn gepasseerd, vanaf het moment dat
      * de methode resetKassa is aangeroepen.
      *
      * @return hoeveelheid geld in de kassa
      */
     public double hoeveelheidGeldInKassa() {
-        // method body omitted
+        return totaalBedragKassa;
     }
 
     /**
@@ -47,6 +51,7 @@ public class Kassa {
      * kassa.
      */
     public void resetKassa() {
-        // method body omitted
+        totaalBedragKassa = 0;
+        aantalArtikelenKassa = 0;
     }
 }

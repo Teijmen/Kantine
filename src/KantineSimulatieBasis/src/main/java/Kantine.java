@@ -1,3 +1,5 @@
+package KantineSimulatieBasis.src.main.java;
+
 public class Kantine {
 
     private Kassa kassa;
