@@ -12,7 +12,11 @@ public class Artikel {
      */
     public Artikel(String naam, int prijs) {
         this.naam = naam;
-        this.prijs = prijs;
+        if(prijs <= 0){
+            System.out.println("Incorrecte prijs");
+        }else{
+            this.prijs = prijs;
+        }
     }
 
     public Artikel() {
