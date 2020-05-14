@@ -20,14 +20,23 @@ public class Kantine {
      */
     public void loopPakSluitAan() {
         // method body omitted
+        Datum datum= new Datum(10, 10, 2002);
+        Persoon persoon = new Persoon(123456, "Rick", "Johanens", datum, 'M');
+        Dienblad dienblad = new Dienblad(persoon);
+        Artikel artikel1 = new Artikel("banaan", 0.69f);
+        Artikel artikel2 = new Artikel("Aubergine", 0.99f);
+        dienblad.voegToe(artikel1);
+        dienblad.voegToe(artikel2);
+        kassarij.sluitAchteraan(dienblad);
     }
 
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-        while () {
-            // omitted
+        while (kassarij.erIsEenRij()) {
+            Dienblad eerste = kassarij.eerstePersoonInRij();
+            kassa.rekenAf(eerste);
         }
     }
 
@@ -38,6 +47,7 @@ public class Kantine {
      */
     public double hoeveelheidGeldInKassa() {
         // method body omitted
+        // voor week 2
     }
 
     /**

@@ -3,14 +3,14 @@ package KantineSimulatieBasis.src.main.java;
 public class Artikel {
 
     private String naam;    //naam van een Artikel
-    private int prijs;      //prijs van een Artikel
+    private float prijs;      //prijs van een Artikel
 
     /**
      * Constructor van Artikel
      * @param naam De naam van een artikel
      * @param prijs De prijs van een artikel
      */
-    public Artikel(String naam, int prijs) {
+    public Artikel(String naam, float prijs) {
         this.naam = naam;
         if(prijs <= 0){
             System.out.println("Incorrecte prijs");
@@ -43,7 +43,7 @@ public class Artikel {
      * Methode om de prijs van een artikel op te vragen
      * @return De prijs van een artikel
      */
-    public int getPrijs() {
+    public float getPrijs() {
         return prijs;
     }
 
@@ -51,7 +51,7 @@ public class Artikel {
      * Methode om een artikel een prijs te geven
      * @param prijs De prijs van een artikel
      */
-    public void setPrijs(int prijs) {
+    public void setPrijs(float prijs) {
         if(prijs <= 0){
             System.out.println("Incorrecte prijs");
         }else{
