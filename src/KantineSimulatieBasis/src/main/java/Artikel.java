@@ -1,6 +1,7 @@
 package KantineSimulatieBasis.src.main.java;
 
 public class Artikel {
+
     private String naam;
     private int prijs;
 
@@ -28,4 +29,11 @@ public class Artikel {
     public void setPrijs(int prijs) {
         this.prijs = prijs;
     }
+
+    @Override
+    public String toString(){
+        String outputString = getNaam() + " " + getPrijs();
+        return outputString;
+    }
+
 }

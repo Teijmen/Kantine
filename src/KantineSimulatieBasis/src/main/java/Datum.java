@@ -29,7 +29,7 @@ public class Datum {
 	 *
 	 * @return Geboortedatum
 	 */
-	public String getDatumAsString(int dag, int maand, int jaar) {
+	public String getDatumAsString() {
 		String datum = String.valueOf(this.dag) + " - " + String.valueOf(this.maand) + " - " + String.valueOf(this.jaar) ;
 		return datum;
 	}
@@ -61,9 +61,9 @@ public class Datum {
 	public boolean bestaatDatum(int dag, int maand, int jaar) {
 		if(dag < 1) {
 			return false;
-		} if(maand < 1 && maand > 12) {
+		} if(maand < 1 || maand > 12) {
 			return false;
-		} if(jaar < 1900 && jaar > 2100) {
+		} if(jaar < 1900 || jaar > 2100) {
 			return false;
 		} if(maand == 1 && dag > 31) {
 			return false;
@@ -79,9 +79,9 @@ public class Datum {
 			return false;
 		} if (maand == 12 && dag > 31) {
 			return false;
-		} if(maand == 2 && dag > 28 && isSchrikkelJaar(jaar) == false) {
+		} if(maand == 2 && dag > 28 && !isSchrikkelJaar(jaar)) {
 			return false;
-		} if(maand == 2 && dag > 29 && isSchrikkelJaar(jaar) == true) {
+		} if(maand == 2 && dag > 29 && isSchrikkelJaar(jaar)) {
 			return false;
 		} if (maand == 4 && dag > 30) {
 			return false;
@@ -96,13 +96,21 @@ public class Datum {
 	}
 
 	public boolean isSchrikkelJaar(int jaar) {
-		if(jaar %4 != 0) {
+		if(jaar % 4 == 0) {
+			if(jaar % 100 == 0){
+				if(jaar % 400 == 0){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+			else{
+				return false;
+			}
+		}
+		else {
 			return false;
 		}
-
-		if(jaar %100 == 0 && jaar %400 != 0) {
-			return false;
-		}
-		return true;
 	}
 }
