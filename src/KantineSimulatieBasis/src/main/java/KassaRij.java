@@ -32,12 +32,11 @@ public class KassaRij {
      * @return Eerste klant in de rij of null
      */
     public Dienblad eerstePersoonInRij() {
-        if(erIsEenRij()){
+        if (erIsEenRij()) {
             Dienblad eerstePersoon = rij.get(0); //eerste in de arrayList
             rij.remove(0);  //verwijder persoon uit de rij
             return eerstePersoon;
         }
-
         return null;
     }
 
@@ -47,10 +46,6 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        if(rij.isEmpty()){
-            return false;
-        }
-
-        return true;
+        return rij.isEmpty();
     }
 }

@@ -57,13 +57,10 @@ public class Artikel {
         }else{
             this.prijs = prijs;
         }
-
     }
 
     @Override
     public String toString(){
-        String outputString = getNaam() + " " + getPrijs();
-        return outputString;
+        return getNaam() + " " + getPrijs();
     }
-
 }

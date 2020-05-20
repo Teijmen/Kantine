@@ -147,8 +147,6 @@ public class Persoon {
 
     @Override
     public String toString(){
-        String output = getVoornaam() + " " + getAchternaam() + "  " + getBSN() + " " + getGeboortedatum() + " " + getGeslacht();
-        return output;
+        return getVoornaam() + " " + getAchternaam() + "  " + getBSN() + " " + getGeboortedatum() + " " + getGeslacht();
     }
-
 }
