@@ -8,6 +8,14 @@ public class Persoon {
     private Datum geboortedatum;
     private char geslacht;
 
+    /**
+     * Constructor van Persoon
+     * @param bsn Bsn nummer van persoon
+     * @param voornaam De voornaam
+     * @param achternaam De achternaam
+     * @param geboortedatum De geboortedatum
+     * @param geslacht Het geslacht
+     */
     public Persoon(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht) {
         this.bsn = bsn;
         this.voornaam = voornaam;
@@ -19,6 +27,9 @@ public class Persoon {
         }
     }
 
+    /**
+     * Constructor van Persoon zonder parameters
+     */
     public Persoon() {
         this.geboortedatum = null;
         this.geslacht = 'O'; //wanneer geslacht niet correct is, geeft 'O' van onbekend
@@ -78,7 +89,6 @@ public class Persoon {
      */
     public void setGeboortedatum(Datum geboortedatum) {
         this.geboortedatum = geboortedatum;
-        //this.geboortedatum = geboortedatum.getDatumAsString();
     }
 
     /**
@@ -86,11 +96,7 @@ public class Persoon {
      * @return geboortedatum van de user.
      */
     public String getGeboortedatum() {
-        String outputString = geboortedatum.getDatumAsString();
-        if(outputString.equals(0-0-0)) {
-            outputString = "Onbekend";
-        }
-        return outputString;
+        return this.geboortedatum.getDatumAsString();
     }
 
     /**
@@ -115,21 +121,13 @@ public class Persoon {
     public String getGeslacht() {
 
         String s = String.valueOf(geslacht);
-        String outputString = "";
 
         if(s.equals("M")){
-            outputString = "Man";
-            return outputString;
-        }
-
-        else if(s.equals("F")){
-            outputString = "Vrouw";
-            return outputString;
-        }
-
-        else{
-            outputString = "Onbekend";
-            return  outputString;
+            return "Man";
+        } else if(s.equals("F")){
+            return "Vrouw";
+        } else{
+            return "Onbekend";
         }
     }
 

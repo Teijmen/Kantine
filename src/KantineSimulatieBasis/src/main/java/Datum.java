@@ -30,8 +30,7 @@ public class Datum {
 	 * @return Geboortedatum
 	 */
 	public String getDatumAsString() {
-		String datum = String.valueOf(this.dag) + " - " + String.valueOf(this.maand) + " - " + String.valueOf(this.jaar) ;
-		return datum;
+		return String.valueOf(this.dag) + " - " + String.valueOf(this.maand) + " - " + String.valueOf(this.jaar) ;
 	}
 
 	public void setDag(int dag) {

@@ -1,25 +1,24 @@
 package KantineSimulatieBasis.src.main.java;
 
-import KantineSimulatieBasis.src.main.java.Artikel;
-import KantineSimulatieBasis.src.main.java.Persoon;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Stack;
+import java.util.Iterator;
 
 public class Dienblad {
 
-    private ArrayList<Artikel> artikelen; //alle artikelen op een dienblad
+    private Stack<Artikel> artikelen; //alle artikelen op een Dienblad
     private Persoon klant;  //de klant
 
     /**
-     * Constructor
+     * Constructor van Dienblad zonder parameters
      */
     public Dienblad() {
-        // method body omitted
-        artikelen = new ArrayList<Artikel>();
+        artikelen = new Stack<>(); // nieuwe Stack van artikelen
     }
 
+    /**
+     * Constructor van Dienblad met parameters
+     * @param klant De klant met een dienblad
+     */
     public Dienblad(Persoon klant){
         this.klant = klant;
     }
@@ -48,7 +47,7 @@ public class Dienblad {
      * @param artikel Een artikel van de klasse Artikel
      */
     public void voegToe(Artikel artikel) {
-        artikelen.add(artikel);
+        artikelen.push(artikel);
     }
 
     /**
@@ -72,5 +71,12 @@ public class Dienblad {
         }
         return totalPrice;
     }
+
+    public Iterator<Artikel> getDienblad(){
+
+        Iterator<Artikel> it = artikelen.iterator();
+        return it;
+    }
+
 }
 

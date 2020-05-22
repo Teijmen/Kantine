@@ -12,11 +12,7 @@ public class Artikel {
      */
     public Artikel(String naam, float prijs) {
         this.naam = naam;
-        if(prijs <= 0){
-            System.out.println("Incorrecte prijs");
-        }else{
-            this.prijs = prijs;
-        }
+        this.prijs = prijs;
     }
 
     public Artikel() {

@@ -20,7 +20,7 @@ public class Kantine {
      */
     public void loopPakSluitAan() {
         // method body omitted
-        Datum datum= new Datum(10, 10, 2002);
+        Datum datum = new Datum(10, 10, 2002);
         Persoon persoon = new Persoon(123456, "Rick", "Johanens", datum, 'M');
         Dienblad dienblad = new Dienblad(persoon);
         Artikel artikel1 = new Artikel("banaan", 0.69f);
@@ -35,8 +35,8 @@ public class Kantine {
      */
     public void verwerkRijVoorKassa() {
         while (kassarij.erIsEenRij()) {
-            Dienblad eerste = kassarij.eerstePersoonInRij();
-            kassa.rekenAf(eerste);
+            Dienblad eersteInDeRij = kassarij.eerstePersoonInRij();
+            kassa.rekenAf(eersteInDeRij);
         }
     }
 
@@ -45,9 +45,8 @@ public class Kantine {
      *
      * @return hoeveelheid geld in kassa
      */
-    public double hoeveelheidGeldInKassa() {
-        // method body omitted
-        // voor week 2
+    public String getDagTotalen() {
+        return kassa.aantalArtikelen() + " " + kassa.hoeveelheidGeldInKassa();
     }
 
     /**
@@ -55,8 +54,8 @@ public class Kantine {
      *
      * @return het aantal gepasseerde artikelen
      */
-    public int aantalArtikelen() {
-        // method body omitted
+    public int getAantalArtikelen() {
+        return kassa.aantalArtikelen();
     }
 
     /**
@@ -64,6 +63,6 @@ public class Kantine {
      * de kassa.
      */
     public void resetKassa() {
-        // method body omitted
+       kassa.resetKassa();
     }
 }

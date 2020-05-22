@@ -1,19 +1,16 @@
 package KantineSimulatieBasis.src.main.java;
 
-import KantineSimulatieBasis.src.main.java.Dienblad;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class KassaRij {
 
-    private ArrayList<Dienblad> rij;
+    private LinkedList<Dienblad> rij;
 
     /**
      * Constructor
      */
     public KassaRij() {
-        rij = new ArrayList<>();
+        rij = new LinkedList<>(); // nieuwe rij
     }
 
     /**
@@ -32,7 +29,7 @@ public class KassaRij {
      * @return Eerste klant in de rij of null
      */
     public Dienblad eerstePersoonInRij() {
-        if (erIsEenRij()) {
+        if(erIsEenRij()){
             Dienblad eerstePersoon = rij.get(0); //eerste in de arrayList
             rij.remove(0);  //verwijder persoon uit de rij
             return eerstePersoon;
@@ -46,6 +43,6 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        return rij.isEmpty();
+       return rij.isEmpty();
     }
 }
