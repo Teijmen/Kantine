@@ -21,6 +21,7 @@ public class Dienblad {
      */
     public Dienblad(Persoon klant){
         this.klant = klant;
+        artikelen = new Stack<>(); // nieuwe Stack van artikelen
     }
 
     /**

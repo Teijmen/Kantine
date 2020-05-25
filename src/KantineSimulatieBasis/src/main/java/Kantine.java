@@ -6,6 +6,8 @@ public class Kantine {
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
 
+    private double[] prijzen = new double[] {1.50, 2.10, 1.65, 1.65};
+    private int[] hoeveelheid = new int[] {15, 5, 25};
     /**
      * Constructor
      */
@@ -21,7 +23,11 @@ public class Kantine {
      * @param artikelnamen Een array met alle artikelnamen
      */
     public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
-        for(int i = 0; i < artikelnamen.length; i++) {
+
+        kantineAanbod = new KantineAanbod(artikelnamen, prijzen, hoeveelheid);
+        setKantineAanbod(kantineAanbod);
+
+        for(int i = 0; i < artikelnamen.length-1; i++) {
             dienblad.voegToe(kantineAanbod.getArtikel(artikelnamen[i]));
         }
     }
@@ -41,7 +47,7 @@ public class Kantine {
      * @return hoeveelheid geld in kassa
      */
     public String getDagTotalen() {
-        return kassa.aantalArtikelen() + " " + kassa.hoeveelheidGeldInKassa();
+        return "Aantal artikelen: " + kassa.aantalArtikelen() + " \n Hoeveelheid geld: " + kassa.hoeveelheidGeldInKassa();
     }
 
     /**

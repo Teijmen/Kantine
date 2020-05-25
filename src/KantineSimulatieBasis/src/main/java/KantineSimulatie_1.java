@@ -1,15 +1,17 @@
 package KantineSimulatieBasis.src.main.java;
 
-public class KantineSimulatie {
+public class KantineSimulatie_1 {
 
     private Kantine kantine;
 
     public static final int DAGEN = 7;
 
+    private String[] artikelen = new String[] {"banaan", "appel", "koffie", "sap"};
+
     /**
      * Constructor
      */
-    public KantineSimulatie() {
+    public KantineSimulatie_1() {
         kantine = new Kantine();
     }
 
@@ -19,6 +21,8 @@ public class KantineSimulatie {
      *
      * @param dagen Het aantal dagen van de simulatie
      */
+
+    /*
     public void simuleer(int dagen) {
 
         // herhaal voor elke dag
@@ -29,8 +33,10 @@ public class KantineSimulatie {
 
             // for lus voor personen
             for (int j = 0; j < 10 + i; j++) {
+                Persoon persoon = new Persoon();
+                Dienblad dienblad = new Dienblad(persoon);
 
-                kantine.loopPakSluitAan();
+                kantine.loopPakSluitAan(dienblad, artikelen);
             }
 
             // verwerk rij voor de kassa
@@ -44,10 +50,12 @@ public class KantineSimulatie {
 
         }
     }
-
+    */
     /**
      * Start een simulatie
      */
+
+    /*
     public static void main(String[] args) {
         int dagen;
 
@@ -56,7 +64,9 @@ public class KantineSimulatie {
         } else {
             dagen = Integer.parseInt(args[0]);
         }
-        KantineSimulatie ks = new KantineSimulatie();
+        KantineSimulatie_1 ks = new KantineSimulatie_1();
         ks.simuleer(dagen);
     }
+
+     */
 }
