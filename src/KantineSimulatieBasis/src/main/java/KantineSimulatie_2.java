@@ -1,3 +1,5 @@
+package KantineSimulatieBasis.src.main.java;
+
 import java.util.*;
 
 public class KantineSimulatie {

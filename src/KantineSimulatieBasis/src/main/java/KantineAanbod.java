@@ -1,3 +1,5 @@
+package KantineSimulatieBasis.src.main.java;
+
 import java.util.*;
 
 public class KantineAanbod {
@@ -68,7 +70,7 @@ public class KantineAanbod {
      * Publieke methode om een artikel via naam van de stapel te pakken. Retouneert null als artikel
      * niet bestaat of niet op voorraad is.
      *
-     * @param naam (van artikel)
+     * @param productnaam (van artikel)
      * @return artikel (of null)
      */
     public Artikel getArtikel(String productnaam) {
