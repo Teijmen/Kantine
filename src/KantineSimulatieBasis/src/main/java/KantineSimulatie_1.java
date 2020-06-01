@@ -3,6 +3,7 @@ package KantineSimulatieBasis.src.main.java;
 public class KantineSimulatie_1 {
 
     private Kantine kantine;
+    private Kassa kassa;
 
     public static final int DAGEN = 7;
 
@@ -13,6 +14,7 @@ public class KantineSimulatie_1 {
      */
     public KantineSimulatie_1() {
         kantine = new Kantine();
+        kassa = kantine.getKassa();
     }
 
     /**
@@ -22,7 +24,6 @@ public class KantineSimulatie_1 {
      * @param dagen Het aantal dagen van de simulatie
      */
 
-    /*
     public void simuleer(int dagen) {
 
         // herhaal voor elke dag
@@ -46,16 +47,14 @@ public class KantineSimulatie_1 {
             System.out.println(kantine.getDagTotalen());
 
             // reset de kassa voor de volgende dag
-            kantine.resetKassa();
+            kassa.resetKassa();
 
         }
     }
-    */
     /**
      * Start een simulatie
      */
 
-    /*
     public static void main(String[] args) {
         int dagen;
 
@@ -67,6 +66,4 @@ public class KantineSimulatie_1 {
         KantineSimulatie_1 ks = new KantineSimulatie_1();
         ks.simuleer(dagen);
     }
-
-     */
 }

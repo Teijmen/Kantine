@@ -50,28 +50,19 @@ public class Kantine {
         return "Aantal artikelen: " + kassa.aantalArtikelen() + " \n Hoeveelheid geld: " + kassa.hoeveelheidGeldInKassa();
     }
 
-    /**
-     * Deze methode geeft het aantal gepasseerde artikelen.
-     *
-     * @return het aantal gepasseerde artikelen
-     */
-    public int getAantalArtikelen() {
-        return kassa.aantalArtikelen();
-    }
-
-    /**
-     * Deze methode reset de bijgehouden telling van het aantal artikelen en "leegt" de inhoud van
-     * de kassa.
-     */
-    public void resetKassa() {
-       kassa.resetKassa();
-    }
-
     public KantineAanbod getKantineAanbod() {
         return kantineAanbod;
     }
 
     public void setKantineAanbod(KantineAanbod kantineAanbod) {
         this.kantineAanbod = kantineAanbod;
+    }
+
+    public Kassa getKassa() {
+        return kassa;
+    }
+
+    public void setKassa(Kassa kassa) {
+        this.kassa = kassa;
     }
 }
