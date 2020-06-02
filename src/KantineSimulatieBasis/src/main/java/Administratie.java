@@ -17,7 +17,7 @@ public class Administratie {
      */
 
 
-    public double berekenGemiddeldAantal(int[] aantal) {
+    public static double berekenGemiddeldAantal(int[] aantal) {
         double total = 0;
         double average = 0;
 
@@ -40,7 +40,7 @@ public class Administratie {
      * @return het gemiddelde
      */
 
-    public double berekenGemiddeldeOmzet(double[] omzet) {
+    public static double berekenGemiddeldeOmzet(double[] omzet) {
         double total = 0;
         double average = 0;
 

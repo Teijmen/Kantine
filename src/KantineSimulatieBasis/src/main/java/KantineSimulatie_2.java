@@ -112,15 +112,22 @@ public class KantineSimulatie_2 {
         for(int i = 0; i < dagen; i++) {
 
             // bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
+            int aantalpersonen = 100;
 
             // laat de personen maar komen...
             for (int j = 0; j < aantalpersonen; j++) {
 
-                // maak persoon en dienblad aan, koppel ze
-                // en bedenk hoeveel artikelen worden gepakt
-                Persoon persoon = new Persoon();
-                Dienblad dienblad = new Dienblad(persoon);
+                if(j < 89) {
+                    Student student = new Student(4321, "Bé", "Die", null, 'F', 1234, "BITM");
+                } else if(j >= 89 && j < 99) {
+                    Docent docent = new Docent(1939, "Geef", "Tien", null, 'F', "bedi", "BesteJavaProgrammeur");
+                } else {
+                    KantineMedewerker kantineMedewerker = new KantineMedewerker(1914, "AcHt", "iSOoKgOeD", null, 'F', 10, false);
+                }
+
+
+
+
 
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
 
@@ -133,13 +140,6 @@ public class KantineSimulatie_2 {
                 // de indexen hierboven
                 String[] artikelen = geefArtikelNamen(tepakken);
 
-                //check voorraad
-                for(int x=0; x<artikelen.length; x++){
-                    String product = artikelen[x];
-                    kantineAanbod.vulVoorraadAan(product);
-
-                }
-
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
                 kantine.loopPakSluitAan(dienblad, artikelen);
@@ -148,9 +148,11 @@ public class KantineSimulatie_2 {
 
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
+
             // druk de dagtotalen af en hoeveel personen binnen
             // zijn gekomen
             System.out.println(kantine.getDagTotalen() + " \n Aantal personen: " + aantalpersonen);
+
             // reset de kassa voor de volgende dag
             kassa.resetKassa();
         }

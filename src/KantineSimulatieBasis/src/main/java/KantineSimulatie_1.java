@@ -1,10 +1,15 @@
 package KantineSimulatieBasis.src.main.java;
 
+import java.util.Random;
+
 public class KantineSimulatie_1 {
 
     private Kantine kantine;
     private Kassa kassa;
-    private int[] totaalAantalOfzo;
+    private Administratie administratie;
+
+    private int[] totaalAantal;
+    private double[] omzet;
 
     public static final int DAGEN = 7;
 
@@ -35,6 +40,7 @@ public class KantineSimulatie_1 {
 
             // for lus voor personen
             for (int j = 0; j < 100; j++) {
+
                 if(j < 89) {
                     Student student = new Student(4321, "Bé", "Die", null, 'F', 1234, "BITM");
                     Dienblad dienblad = new Dienblad(student);
@@ -53,8 +59,15 @@ public class KantineSimulatie_1 {
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
 
+            for(int x=0; x<100; x++){
+                totaalAantal[i] = kassa.aantalArtikelen();
+                omzet[i] = kassa.hoeveelheidGeldInKassa();
+            }
+
             // toon dagtotalen (artikelen en geld in kassa)
-            System.out.println(berekenDagOmzet(double[] omzet));
+            System.out.println("Gemiddeld aantal producten: " + administratie.berekenGemiddeldAantal(totaalAantal));
+            System.out.println("Gemmidelde omzet: " + administratie.berekenGemiddeldeOmzet(omzet));
+            System.out.println("Dag omzet: " + administratie.berekenDagOmzet(omzet));
 
             // reset de kassa voor de volgende dag
             kassa.resetKassa();

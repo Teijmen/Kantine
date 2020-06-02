@@ -30,4 +30,9 @@ public class Student extends Persoon{
     public void setStudierichting(String studierichting) {
         this.studierichting = studierichting;
     }
+
+    @Override
+    public String toString(){//overriding the toString() method
+        return "Student";
+    }
 }

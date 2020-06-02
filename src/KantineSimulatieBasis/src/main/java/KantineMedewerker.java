@@ -29,4 +29,9 @@ public class KantineMedewerker extends Persoon {
     public void setMagAchterKassaStaan(boolean magAchterKassaStaan) {
         this.magAchterKassaStaan = magAchterKassaStaan;
     }
+
+    @Override
+    public String toString(){//overriding the toString() method
+        return "KantineMedewerker";
+    }
 }
