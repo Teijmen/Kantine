@@ -4,6 +4,7 @@ public class KantineSimulatie_1 {
 
     private Kantine kantine;
     private Kassa kassa;
+    private int[] totaalAantalOfzo;
 
     public static final int DAGEN = 7;
 
@@ -33,18 +34,27 @@ public class KantineSimulatie_1 {
             // laten gaan, wordt volgende week veranderd...
 
             // for lus voor personen
-            for (int j = 0; j < 10 + i; j++) {
-                Persoon persoon = new Persoon();
-                Dienblad dienblad = new Dienblad(persoon);
-
-                kantine.loopPakSluitAan(dienblad, artikelen);
+            for (int j = 0; j < 100; j++) {
+                if(j < 89) {
+                    Student student = new Student(4321, "Bé", "Die", null, 'F', 1234, "BITM");
+                    Dienblad dienblad = new Dienblad(student);
+                    kantine.loopPakSluitAan(dienblad, artikelen);
+                } else if(j >= 89 && j < 99) {
+                    Docent docent = new Docent(1939, "Geef", "Tien", null, 'F', "bedi", "BesteJavaProgrammeur");
+                    Dienblad dienblad = new Dienblad(docent);
+                    kantine.loopPakSluitAan(dienblad, artikelen);
+                } else {
+                    KantineMedewerker kantineMedewerker = new KantineMedewerker(1914, "AcHt", "iSOoKgOeD", null, 'F', 10, false);
+                    Dienblad dienblad = new Dienblad(kantineMedewerker);
+                    kantine.loopPakSluitAan(dienblad, artikelen);
+                }
             }
 
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
 
             // toon dagtotalen (artikelen en geld in kassa)
-            System.out.println(kantine.getDagTotalen());
+            System.out.println(berekenDagOmzet(double[] omzet));
 
             // reset de kassa voor de volgende dag
             kassa.resetKassa();
