@@ -63,6 +63,7 @@ public class KantineSimulatie_1 {
     }
     /**
      * Start een simulatie
+     * Jo
      */
 
     public static void main(String[] args) {
