@@ -10,7 +10,7 @@ public class KantineAanbod {
 
     /**
      * Constructor. Het eerste argument is een lijst met artikelnamen, het tweede argument is
-     * eenlijst met prijzen en het derde argument is een lijst met hoeveelheden. Let op: de
+     * een lijst met prijzen en het derde argument is een lijst met hoeveelheden. Let op: de
      * dimensies van de drie arrays moeten wel gelijk zijn!
      */
     public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid) {

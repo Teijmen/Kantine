@@ -33,6 +33,6 @@ public class Docent extends Persoon {
 
     @Override
     public String toString(){//overriding the toString() method
-        return "Docent";
+        return "docent";
     }
 }

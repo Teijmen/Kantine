@@ -22,7 +22,7 @@ public class KantineMedewerker extends Persoon {
         this.medewerkersNummer = medewerkersNummer;
     }
 
-    public boolean isMagAchterKassaStaan() {
+    public boolean magAchterKassaStaan() {
         return magAchterKassaStaan;
     }
 
@@ -32,6 +32,6 @@ public class KantineMedewerker extends Persoon {
 
     @Override
     public String toString(){//overriding the toString() method
-        return "KantineMedewerker";
+        return "kantineMedewerker";
     }
 }

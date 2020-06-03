@@ -6,8 +6,6 @@ public class Kantine {
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
 
-    private double[] prijzen = new double[] {1.50, 2.10, 1.65, 1.65};
-    private int[] hoeveelheid = new int[] {15, 5, 25};
     /**
      * Constructor
      */
@@ -23,12 +21,10 @@ public class Kantine {
      * @param artikelnamen Een array met alle artikelnamen
      */
     public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
-
-        kantineAanbod = new KantineAanbod(artikelnamen, prijzen, hoeveelheid);
-        setKantineAanbod(kantineAanbod);
-
-        for(int i = 0; i < artikelnamen.length-1; i++) {
+        for(int i = 0; i < artikelnamen.length; i++) {
             dienblad.voegToe(kantineAanbod.getArtikel(artikelnamen[i]));
+            kassarij.sluitAchteraan(dienblad);
+            //System.out.println(kantineAanbod.getArtikel(artikelnamen[i]) + " toegevoegd aan dienblad");
         }
     }
 
@@ -41,21 +37,16 @@ public class Kantine {
         }
     }
 
-    /**
-     * Deze methode telt het geld uit de kassa
-     *
-     * @return hoeveelheid geld in kassa
-     */
-    public String getDagTotalen() {
-        return "Aantal artikelen: " + kassa.aantalArtikelen() + " \n Hoeveelheid geld: " + kassa.hoeveelheidGeldInKassa();
-    }
-
     public KantineAanbod getKantineAanbod() {
         return kantineAanbod;
     }
 
     public void setKantineAanbod(KantineAanbod kantineAanbod) {
         this.kantineAanbod = kantineAanbod;
+    }
+
+    public String getDagTotalen(){
+        return "Bedrag: " + kassa.hoeveelheidGeldInKassa() + ". Aantal producten: " + kassa.aantalArtikelen();
     }
 
     public Kassa getKassa() {

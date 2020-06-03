@@ -19,10 +19,6 @@ public class Datum {
 	}
 
 	public Datum() {
-
-	}
-
-	public Datum() {
 		this.dag = 0;
 		this.maand = 0;
 		this.jaar = 0;
