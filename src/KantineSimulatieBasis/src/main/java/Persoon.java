@@ -7,6 +7,7 @@ public class Persoon {
     private String achternaam;
     private Datum geboortedatum;
     private char geslacht;
+    private Betaalwijze betaalwijze;
 
     /**
      * Constructor van Persoon
@@ -141,6 +142,14 @@ public class Persoon {
             //incorrect geslacht
             return false;
         }
+    }
+
+    public Betaalwijze getBetaalwijze() {
+        return betaalwijze;
+    }
+
+    public void setBetaalwijze(Betaalwijze betaalwijze) {
+        this.betaalwijze = betaalwijze;
     }
 
     @Override

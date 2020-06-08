@@ -136,10 +136,19 @@ public class KantineSimulatie_2 {
                 // maak nieuwe klant
                 if(randomCustomer < 89) {
                     klant = new Student(4321, "Bé", "Die", new Datum(1, 2, 2000), 'F', 1234, "BITM");
+                    Betaalwijze c = new Pinpas();
+                    klant.setBetaalwijze(c);
+                    c.setSaldo(100);
                 } else if(randomCustomer >= 89 && randomCustomer < 99) {
                     klant = new Docent(1939, "Geef", "Tien", new Datum(1, 2, 2000), 'F', "bedi", "BesteJavaProgrammeur");
+                    Betaalwijze c = new Contant();
+                    klant.setBetaalwijze(c);
+                    c.setSaldo(100);
                 } else {
                     klant = new KantineMedewerker(1914, "AcHt", "iSOoKgOeD", new Datum(1, 2, 2000), 'F', 10, false);
+                    Betaalwijze c = new Contant();
+                    klant.setBetaalwijze(c);
+                    c.setSaldo(0);
                 }
 
                 // check wat voor soort klant
@@ -157,7 +166,7 @@ public class KantineSimulatie_2 {
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen
                 int[] tepakken = getRandomArray(
-                    aantalartikelen, 0, artikelnamen.length-1);
+                    aantalartikelen, 0, 3);
 
                 // vind de artikelnamen op basis van
                 // de indexen hierboven

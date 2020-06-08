@@ -22,11 +22,48 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
+
+        Betaalwijze betaalwijze = klant.getKlant().getBetaalwijze(); // check de betaalwijze van de klant
+        double teBetalen = 0; // totaal bedrag op dienblad
+        int aantalProducten = 0;
+
         Iterator<Artikel> it = klant.getDienblad();
         while(it.hasNext()){
             Artikel a = it.next();
-            totaalBedragKassa += a.getPrijs();
-            aantalArtikelenKassa++;
+            teBetalen += a.getPrijs();
+            aantalProducten++;
+        }
+
+        Persoon persoon = klant.getKlant(); // de klant
+
+        // korting berekenen
+
+        // check of het een docent is
+        if(persoon instanceof Docent){
+            Docent docent = (Docent) persoon; // cast naar docent
+
+            //check of er een maximum is en onder het maximum blijft
+            if(docent.heeftMaximum() && ((docent.geefKortingsPercentage()*teBetalen)/100 < docent.geefMaximum())){
+                teBetalen -= (docent.geefKortingsPercentage()*teBetalen)/100; // haal korting van het te balen bedrag af
+            }else{
+                teBetalen -= docent.geefMaximum(); // haal maximale korting van het bedrag af
+            }
+        }
+
+        // check of het een kantinemedewerker is
+        else if(persoon instanceof KantineMedewerker){
+            KantineMedewerker kantineMedewerker = (KantineMedewerker) persoon;
+            teBetalen = (kantineMedewerker.geefKortingsPercentage()*teBetalen)/100;
+        }
+
+        // betalen
+
+        try{
+            betaalwijze.betaal(teBetalen);
+            totaalBedragKassa += teBetalen; // tel het bedrag bij het totaal op
+            aantalArtikelenKassa += aantalProducten; // tel het aantal producten van deze klant bij het totaal op
+        }catch(TeWeinigGeldException e){
+            System.out.println(e+ klant.getKlant().getVoornaam() + " " + klant.getKlant().getAchternaam());
         }
     }
 
