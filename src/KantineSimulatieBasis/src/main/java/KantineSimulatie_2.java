@@ -136,9 +136,10 @@ public class KantineSimulatie_2 {
                 // maak nieuwe klant
                 if(randomCustomer < 89) {
                     klant = new Student(4321, "Bé", "Die", new Datum(1, 2, 2000), 'F', 1234, "BITM");
-                    Betaalwijze c = new Pinpas();
-                    klant.setBetaalwijze(c);
-                    c.setSaldo(100);
+                    Pinpas p = new Pinpas();
+                    p.setKredietLimiet(10);
+                    klant.setBetaalwijze(p);
+                    p.setSaldo(25);
                 } else if(randomCustomer >= 89 && randomCustomer < 99) {
                     klant = new Docent(1939, "Geef", "Tien", new Datum(1, 2, 2000), 'F', "bedi", "BesteJavaProgrammeur");
                     Betaalwijze c = new Contant();
@@ -148,7 +149,7 @@ public class KantineSimulatie_2 {
                     klant = new KantineMedewerker(1914, "AcHt", "iSOoKgOeD", new Datum(1, 2, 2000), 'F', 10, false);
                     Betaalwijze c = new Contant();
                     klant.setBetaalwijze(c);
-                    c.setSaldo(0);
+                    c.setSaldo(10);
                 }
 
                 // check wat voor soort klant

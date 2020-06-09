@@ -38,22 +38,18 @@ public class Kassa {
 
         // korting berekenen
 
-        // check of het een docent is
-        if(persoon instanceof Docent){
-            Docent docent = (Docent) persoon; // cast naar docent
+        if(persoon instanceof KortingskaartHouder){
+            KortingskaartHouder klantMetKorting = (KortingskaartHouder) persoon; // casten
 
-            //check of er een maximum is en onder het maximum blijft
-            if(docent.heeftMaximum() && ((docent.geefKortingsPercentage()*teBetalen)/100 < docent.geefMaximum())){
-                teBetalen -= (docent.geefKortingsPercentage()*teBetalen)/100; // haal korting van het te balen bedrag af
+            if(klantMetKorting.heeftMaximum()){
+                if((klantMetKorting.geefKortingsPercentage()*teBetalen)/100 < klantMetKorting.geefMaximum()){
+                    teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100; // haal korting van het bedrag af
+                }else{
+                    teBetalen -= klantMetKorting.geefMaximum(); // haal max van het bedrag af
+                }
             }else{
-                teBetalen -= docent.geefMaximum(); // haal maximale korting van het bedrag af
+                teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100; // haal korting van het bedrag af
             }
-        }
-
-        // check of het een kantinemedewerker is
-        else if(persoon instanceof KantineMedewerker){
-            KantineMedewerker kantineMedewerker = (KantineMedewerker) persoon;
-            teBetalen = (kantineMedewerker.geefKortingsPercentage()*teBetalen)/100;
         }
 
         // betalen
@@ -63,7 +59,7 @@ public class Kassa {
             totaalBedragKassa += teBetalen; // tel het bedrag bij het totaal op
             aantalArtikelenKassa += aantalProducten; // tel het aantal producten van deze klant bij het totaal op
         }catch(TeWeinigGeldException e){
-            System.out.println(e+ klant.getKlant().getVoornaam() + " " + klant.getKlant().getAchternaam());
+            System.out.println(e + klant.getKlant().getVoornaam() + " " + klant.getKlant().getAchternaam());
         }
     }
 
