@@ -1,11 +1,20 @@
 package KantineSimulatieBasis.src.main.java;
 
-import java.util.*;
+import org.hibernate.Session;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 import static KantineSimulatieBasis.src.main.java.Administratie.*;
 
-public class KantineSimulatie_2 {
-
+public class KantineSimulatie {
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
+            Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
     // kantine
     private Kantine kantine;
 
@@ -47,11 +56,12 @@ public class KantineSimulatie_2 {
     private static final int MIN_ARTIKELEN_PER_PERSOON = 1;
     private static final int MAX_ARTIKELEN_PER_PERSOON = 4;
 
+
     /**
      * Constructor
      *
      */
-    public KantineSimulatie_2() {
+    public KantineSimulatie() {
         kantine = new Kantine();
         kassa = kantine.getKassa();
         random = new Random();
@@ -119,6 +129,8 @@ public class KantineSimulatie_2 {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+
         // for lus voor dagen
         for(int i = 0; i < dagen; i++) {
 
@@ -139,17 +151,17 @@ public class KantineSimulatie_2 {
                     Pinpas p = new Pinpas();
                     p.setKredietLimiet(10);
                     klant.setBetaalwijze(p);
-                    p.setSaldo(25);
+                    p.setSaldo(20);
                 } else if(randomCustomer >= 89 && randomCustomer < 99) {
                     klant = new Docent(1939, "Geef", "Tien", new Datum(1, 2, 2000), 'F', "bedi", "BesteJavaProgrammeur");
                     Betaalwijze c = new Contant();
                     klant.setBetaalwijze(c);
                     c.setSaldo(100);
                 } else {
-                    klant = new KantineMedewerker(1914, "AcHt", "iSOoKgOeD", new Datum(1, 2, 2000), 'F', 10, false);
+                    klant = new KantineMedewerker(1914, "Jan", "Jansen", new Datum(1, 2, 2000), 'F', 10, false);
                     Betaalwijze c = new Contant();
                     klant.setBetaalwijze(c);
-                    c.setSaldo(10);
+                    c.setSaldo(15);
                 }
 
                 // check wat voor soort klant
@@ -164,6 +176,11 @@ public class KantineSimulatie_2 {
                 // aantal artikelen dat de klant pakt
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
 
+                // aantal artikelen met korting
+                int aantalArtikelenKorting = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
+
+
+
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen
                 int[] tepakken = getRandomArray(
@@ -172,6 +189,16 @@ public class KantineSimulatie_2 {
                 // vind de artikelnamen op basis van
                 // de indexen hierboven
                 String[] artikelen = geefArtikelNamen(tepakken);
+
+                // set kortingen bij random producten
+
+                for(int x = 0; x < aantalArtikelenKorting; x++){
+                    int[] randomIndexen = getRandomArray(aantalArtikelenKorting, 1, 4);
+                    Artikel artikel = kantineAanbod.getArtikel(artikelnamen[randomIndexen[x]]);
+
+                    //set korting
+                    artikel.setKorting((20*artikel.getPrijs())/100);
+                }
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
@@ -203,9 +230,13 @@ public class KantineSimulatie_2 {
         System.out.println("Gemiddelde omzet over de gehele simulatie: " + berekenGemiddeldeOmzet(omzet));
         System.out.println("Gemiddelde omzet per dag over de gehele simulatie: " + Arrays.toString(berekenDagOmzet(omzet)));
 
+        manager.close();
+        ENTITY_MANAGER_FACTORY.close();
     }
 
     public static void main(String[] args) {
+
+
         int dagen;
 
         if (args.length == 0) {
@@ -213,7 +244,7 @@ public class KantineSimulatie_2 {
         } else {
             dagen = Integer.parseInt(args[0]);
         }
-        KantineSimulatie_2 ks = new KantineSimulatie_2();
+        KantineSimulatie ks = new KantineSimulatie();
         ks.simuleer(dagen);
     }
 }

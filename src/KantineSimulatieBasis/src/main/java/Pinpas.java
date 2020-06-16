@@ -18,7 +18,7 @@ public class Pinpas extends Betaalwijze {
     /**
      * Methode om betaling af te handelen
      */
-
+    @Override
     public void betaal(double tebetalen) throws TeWeinigGeldException {
         if(saldo-tebetalen < kredietlimiet){
             throw new TeWeinigGeldException("Deze persoon heeft te weinig geld: ");

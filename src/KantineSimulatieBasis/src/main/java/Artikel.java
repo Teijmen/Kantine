@@ -2,8 +2,9 @@ package KantineSimulatieBasis.src.main.java;
 
 public class Artikel {
 
-    private String naam;    //naam van een Artikel
-    private double prijs;      //prijs van een Artikel
+    private String naam;    // naam van een Artikel
+    private double prijs;   // prijs van een Artikel
+    private double korting = 0; // korting bedrag van een Artikel
 
     /**
      * Constructor van Artikel
@@ -13,6 +14,16 @@ public class Artikel {
     public Artikel(String naam, double prijs) {
         this.naam = naam;
         this.prijs = prijs;
+    }
+
+    public Artikel(String naam, double prijs, double korting) {
+        this.naam = naam;
+        this.prijs = prijs;
+        if(korting == 0){
+            this.korting = 0;
+        }else {
+            this.korting = korting;
+        }
     }
 
     public Artikel() {
@@ -53,6 +64,14 @@ public class Artikel {
         }else{
             this.prijs = prijs;
         }
+    }
+
+    public double getKorting() {
+        return korting;
+    }
+
+    public void setKorting(double korting) {
+        this.korting = korting;
     }
 
     @Override

@@ -21,16 +21,21 @@ public class Kassa {
      *
      * @param klant die moet afrekenen
      */
-    public void rekenAf(Dienblad klant) {
+    public void rekenAf(Dienblad klant){
 
         Betaalwijze betaalwijze = klant.getKlant().getBetaalwijze(); // check de betaalwijze van de klant
         double teBetalen = 0; // totaal bedrag op dienblad
+        double kortingDoorDagAanbieding = 0;
         int aantalProducten = 0;
 
         Iterator<Artikel> it = klant.getDienblad();
         while(it.hasNext()){
             Artikel a = it.next();
             teBetalen += a.getPrijs();
+            if(a.getKorting() > 0){
+                teBetalen -= a.getKorting();
+                kortingDoorDagAanbieding += a.getKorting();
+            }
             aantalProducten++;
         }
 
@@ -43,12 +48,12 @@ public class Kassa {
 
             if(klantMetKorting.heeftMaximum()){
                 if((klantMetKorting.geefKortingsPercentage()*teBetalen)/100 < klantMetKorting.geefMaximum()){
-                    teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100; // haal korting van het bedrag af
+                    teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100 + kortingDoorDagAanbieding; // haal korting van het bedrag af
                 }else{
-                    teBetalen -= klantMetKorting.geefMaximum(); // haal max van het bedrag af
+                    teBetalen -= klantMetKorting.geefMaximum() + kortingDoorDagAanbieding; // haal max van het bedrag af
                 }
             }else{
-                teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100; // haal korting van het bedrag af
+                teBetalen -= (klantMetKorting.geefKortingsPercentage()*teBetalen)/100 + kortingDoorDagAanbieding; // haal korting van het bedrag af
             }
         }
 

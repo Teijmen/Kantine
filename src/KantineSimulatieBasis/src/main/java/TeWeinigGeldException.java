@@ -10,5 +10,5 @@ public class TeWeinigGeldException extends Exception{
 
     public TeWeinigGeldException(String message){
         super(message);
-    } //comment
+    }
 }
